@@ -1,68 +1,30 @@
 #include <bits/stdc++.h>
-using namespace std;
-string a;
-int main()
-{
-   while (cin >> a)
-   {
-      if (a == "end")
-         exit(0);
-      bool is_m = false;
-      int m_cnt = 0, j_cnt = 0;
-      stack<char> stk;
-      for (int i = 0; i < a.size(); i++)
-      {
-         if (a[i] != 'e' && a[i] != 'o')
-         {
-            if (stk.size() == 0)
-            {
-               stk.push(a[i]);
-            }
-            else
-            {
+using namespace std;  
+string s;
 
-               if (stk.top() == a[i])
-               {
-                  stk.push(a[i]);
-               }
-               else
-               {
-                  if (stk.size() == 2)
-                  {
-                     break;
-                  }
-                  while (!stk.empty())
-                     stk.pop();
-                  stk.push(a[i]);
-               }
-            }
-         }
+bool isVol(char c){
+   if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {return true;}
+   else {return false;}
+}
 
-         if (m_cnt >= 3 || j_cnt >= 3)
-         {
-            break;
-         }
-         if (a[i] == 'a' || a[i] == 'e' || a[i] == 'i' || a[i] == 'o' || a[i] == 'u')
-         {
-            is_m = true;
-            m_cnt++;
-            j_cnt = 0;
-         }
-         else
-         {
-            j_cnt++;
-            m_cnt = 0;
-         }
+int main () { 
+	while(cin >> s){
+      if(s == "end") break;
+      bool is_vol = false;
+      int m_cnt = 0, j_cnt = 0, prev = -1;
+      
+      for(int i = 0; i < s.size(); i++){
+         if(isVol(s[i])) {m_cnt++; j_cnt = 0; is_vol = true;}
+         else {j_cnt++; m_cnt = 0;}
+      if(m_cnt >= 3 || j_cnt >= 3) break;
+      if(i >= 1 && prev == s[i] && (s[i] != 'e' && s[i] != 'o')){
+         is_vol = false;
+         break;
       }
-      if (!is_m || m_cnt >= 3 || j_cnt >= 3 || stk.size() == 2)
-         cout << "<" << a << ">"
-              << " "
-              << "is not acceptable.";
-      else
-         cout << "<" << a << ">"
-              << " "
-              << "is acceptable.";
-      cout << '\n';
+      prev = s[i];
+      }
+      if(!is_vol || m_cnt >= 3 || j_cnt >= 3) cout << "<" << s << ">" << " is not acceptable.\n";
+      else cout << "<" << s << ">" << " is acceptable.\n";
    }
-   return 0;
+	return 0;
 }
