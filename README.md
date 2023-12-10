@@ -2,7 +2,7 @@
 알고리즘 공부를 하면서 배웠던 개념들과 문제풀이를 기록하는 저장소 입니다. 
 
 ## Template
-> 알고리즘에 사용되는 알고리즘 기법들을 템플릿 형식으로 코드로 정리했습니다.
+> 알고리즘에 사용되는 알고리즘 기법들을 템플릿 형식으로 코드로 정리했습니다.
 
 - [깊이 우선 탐색(DFS)](https://github.com/kwonseokki/Algorithm/blob/main/Template/%08dfs.cpp)<br/>
 - [너비 우선 탐색(BFS)](https://github.com/kwonseokki/Algorithm/blob/main/Template/bfs.cpp)
